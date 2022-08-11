@@ -2,7 +2,13 @@
 import { useContext, useMemo } from "react"
 
 // TABLE
-import { useTable, useSortBy, useGlobalFilter, useFilters } from "react-table"
+import {
+  useTable,
+  useSortBy,
+  useGlobalFilter,
+  useFilters,
+  useRowSelect,
+} from "react-table"
 import { COLUMNS } from "./Columns"
 
 // CONTEXT
@@ -11,6 +17,7 @@ import { DataContext } from "../../context/context"
 // CSS
 import styles from "./table.module.css"
 import { GlobalFilter } from "./plugins/GlobalFilter"
+import { Checkbox } from "./plugins/Checkbox"
 
 const Table = () => {
   const { database } = useContext(DataContext)
@@ -37,7 +44,7 @@ const Table = () => {
   const columns = useMemo(() => COLUMNS, [])
   const data = useMemo(() => dummyData, [])
 
-  // useTable props + options
+  // useTable props + plugins
   const {
     getTableProps,
     getTableBodyProps,
@@ -46,14 +53,33 @@ const Table = () => {
     prepareRow,
     state,
     setGlobalFilter,
+    selectedFlatRows,
   } = useTable(
     {
       columns,
       data,
     },
-    useFilters,
     useGlobalFilter,
-    useSortBy
+    useFilters,
+    useSortBy,
+    useRowSelect,
+    (hooks) => {
+      hooks.visibleColumns.push((columns) => {
+        return [
+          {
+            id: "selection",
+
+            Header: ({ getToggleAllRowsSelectedProps }) => (
+              <Checkbox {...getToggleAllRowsSelectedProps()} />
+            ),
+            Cell: ({ row }) => (
+              <Checkbox {...row.getToggleRowSelectedProps()} />
+            ),
+          },
+          ...columns,
+        ]
+      })
+    }
   )
 
   return (
@@ -78,7 +104,7 @@ const Table = () => {
                         ? column.isSortedDesc
                           ? " ⮙"
                           : " ⮛"
-                        : " ⮚"}
+                        : " "}
                     </span>
                   </div>
                   {/* COLUMN FILTER */}
@@ -93,14 +119,25 @@ const Table = () => {
             prepareRow(row)
             return (
               <tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
-                })}
+                {row.cells.map(
+                  (cell) => {
+                    return (
+                      <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    )
+                  },
+                  null,
+                  2
+                )}
               </tr>
             )
           })}
         </tbody>
       </table>
+      {console.log(
+        `${JSON.stringify({
+          selectedFlatRows: selectedFlatRows.map((row) => row.original),
+        })}`
+      )}
     </div>
   )
 }
