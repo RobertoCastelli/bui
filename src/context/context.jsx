@@ -101,15 +101,13 @@ const ContextProvider = (props) => {
 |_______/ |______/   */
 
   // get DB
-  /*   useEffect(() => {
-    const getData = async () => {
-      const querySnapshot = await getDocs(q)
-      querySnapshot.forEach((doc) => {
-        setDatabase(doc.data().budget)
-      })
-    }
-    getData().catch(console.error)
-  }, [q]) */
+
+  const getData = async () => {
+    const querySnapshot = await getDocs(q)
+    querySnapshot.forEach((doc) => {
+      setDatabase([doc.data()])
+    })
+  }
 
   // RENDER
   return (
@@ -127,6 +125,7 @@ const ContextProvider = (props) => {
         handleEmailAndPassword,
 
         /* database */
+        getData,
         database,
       }}
     >

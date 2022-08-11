@@ -10,27 +10,30 @@ import {
   useRowSelect,
 } from "react-table"
 import { COLUMNS } from "./Columns"
+import { GlobalFilter } from "./plugins/GlobalFilter"
+import { Checkbox } from "./plugins/Checkbox"
 
 // CONTEXT
 import { DataContext } from "../../context/context"
 
 // CSS
 import styles from "./table.module.css"
-import { GlobalFilter } from "./plugins/GlobalFilter"
-import { Checkbox } from "./plugins/Checkbox"
 
 const Table = () => {
-  const { database } = useContext(DataContext)
+  const { database, getData } = useContext(DataContext)
 
   const dummyData = [
     {
       id: 0,
-      title: "example",
-      action: "zero",
+      campus: "zero",
+      edificio: "zero",
+      oggetto: "zero",
+      budget: "zero",
+      realizzato: "zero",
     },
     {
       id: 1,
-      title: "demo",
+      title: "campus",
       action: "uno",
     },
     {
@@ -42,7 +45,7 @@ const Table = () => {
 
   // data
   const columns = useMemo(() => COLUMNS, [])
-  const data = useMemo(() => dummyData, [])
+  const data = useMemo(() => (database ? database : dummyData), [database])
 
   // useTable props + plugins
   const {
@@ -54,6 +57,8 @@ const Table = () => {
     state,
     setGlobalFilter,
     selectedFlatRows,
+    allColumns,
+    getToggleHideAllColumnsProps,
   } = useTable(
     {
       columns,
@@ -84,15 +89,29 @@ const Table = () => {
 
   return (
     <div className={styles.wrapper}>
+      <button onClick={getData}>data</button>
       <h2>table</h2>
+      {/* COLUMN HIDER */}
+      <div className={styles.header__list}>
+        <div>
+          <Checkbox {...getToggleHideAllColumnsProps()} /> all
+        </div>
+        {allColumns.map((column) => (
+          <div key={column.id}>
+            <input type="checkbox" {...column.getToggleHiddenProps()} />
+            {column.Header}
+          </div>
+        ))}
+      </div>
       {/*  GLOBAL FILTER */}
       <GlobalFilter filter={state.globalFilter} setFilter={setGlobalFilter} />
+      {/* TABLE VIEW */}
       <table className={styles.table} {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column, id) => (
-                <th key={id}>
+              {headerGroup.headers.map((column) => (
+                <th key={column.id}>
                   <div
                     className={styles.header__title}
                     {...column.getHeaderProps(column.getSortByToggleProps())}
