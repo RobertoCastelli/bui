@@ -1,0 +1,51 @@
+/*
+.___  ___.      ___       __  .__   __. 
+|   \/   |     /   \     |  | |  \ |  | 
+|  \  /  |    /  ^  \    |  | |   \|  | 
+|  |\/|  |   /  /_\  \   |  | |  . `  | 
+|  |  |  |  /  _____  \  |  | |  |\   | 
+|__|  |__| /__/     \__\ |__| |__| \__|  */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
+body {
+  margin: 0;
+  background-color: var(--white);
+}
+
+:root {
+  --white: #f9f4ef;
+  --darkwhite: #eaddcf;
+  --brown: #8c7851;
+  --darkbrown: #716040;
+  --black: #041322;
+  --orange: #f25042;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  color: var(--darkbrown);
+  letter-spacing: 0.05rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+::placeholder {
+  letter-spacing: 0.05rem;
+  opacity: 0.7;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}

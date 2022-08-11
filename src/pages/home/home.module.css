@@ -1,0 +1,24 @@
+/* 
+ __    __    ______   .___  ___.  _______ 
+|  |  |  |  /  __  \  |   \/   | |   ____|
+|  |__|  | |  |  |  | |  \  /  | |  |__   
+|   __   | |  |  |  | |  |\/|  | |   __|  
+|  |  |  | |  `--'  | |  |  |  | |  |____ 
+|__|  |__|  \______/  |__|  |__| |_______| */
+
+.wrapper {
+  margin: 3rem 1rem;
+}
+.wrapper h2 {
+  text-transform: uppercase;
+  text-align: center;
+}
+.wrapper span {
+  color: var(--darkbrown);
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.personale {
+  text-transform: capitalize;
+}

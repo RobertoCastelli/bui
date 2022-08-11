@@ -1,0 +1,40 @@
+/* 
+.___________. __  .___________. __       _______ 
+|           ||  | |           ||  |     |   ____|
+`---|  |----`|  | `---|  |----`|  |     |  |__   
+    |  |     |  |     |  |     |  |     |   __|  
+    |  |     |  |     |  |     |  `----.|  |____ 
+    |__|     |__|     |__|     |_______||_______| */
+
+.wrapper {
+  text-transform: uppercase;
+  text-align: center;
+}
+.wrapper h1 {
+  color: var(--black);
+  margin: 0;
+}
+
+.wrapper h4 {
+  color: var(--black);
+  font-weight: normal;
+  margin: 0;
+}
+
+.user__content {
+  align-items: center;
+  display: flex;
+  margin: 0 0.5rem;
+  justify-content: space-between;
+}
+
+.user {
+  align-items: center;
+  column-gap: 0.5rem;
+  display: flex;
+}
+
+.line {
+  border-bottom: 1px solid var(--darkbrown);
+  box-shadow: 0px 5px 8px var(--darkbrown);
+}

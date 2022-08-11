@@ -1,0 +1,91 @@
+/* 
+.__   __.      ___   ____    ____ .______        ___      .______      
+|  \ |  |     /   \  \   \  /   / |   _  \      /   \     |   _  \     
+|   \|  |    /  ^  \  \   \/   /  |  |_)  |    /  ^  \    |  |_)  |    
+|  . `  |   /  /_\  \  \      /   |   _  <    /  /_\  \   |      /     
+|  |\   |  /  _____  \  \    /    |  |_)  |  /  _____  \  |  |\  \----.
+|__| \__| /__/     \__\  \__/     |______/  /__/     \__\ | _| `._____| */
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links ul {
+  cursor: pointer;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.li {
+  font-size: small;
+  margin: 0.5rem;
+  text-align: center;
+}
+
+.li:hover {
+  font-weight: bold;
+}
+
+.icona img {
+  margin: 0.5rem;
+  width: 80px;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* DROPDOWN MENU */
+.dropdown__container {
+  position: relative;
+}
+
+.dropdown__container:hover .dropdown__content {
+  display: block;
+  animation: appear 500ms;
+}
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.dropdown__content {
+  display: none;
+  margin: 0.5rem 0;
+  width: 66px;
+  position: absolute;
+}
+
+.dropdown__content ul {
+  display: grid;
+  text-align: left;
+  row-gap: 0.5rem;
+}
+
+.dropdown__content li {
+  font-weight: normal;
+  padding: 0.3rem 0 0.3rem 0.5rem;
+  border-radius: 0.3rem;
+}
+
+.dropdown__content li:hover {
+  font-weight: bold;
+}
+
+.login {
+  color: var(--white);
+  background-color: rgb(95, 158, 160, 0.8);
+}
+
+.logout {
+  color: var(--white);
+  background-color: rgb(165, 42, 42, 0.8);
+}
