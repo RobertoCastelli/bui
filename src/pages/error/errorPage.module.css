@@ -8,8 +8,8 @@
 
 .wrapper {
   margin: 3rem 1rem;
-  text-align: center;
 }
 .wrapper h2 {
   text-transform: uppercase;
+  text-align: center;
 }

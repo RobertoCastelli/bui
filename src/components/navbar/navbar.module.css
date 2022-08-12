@@ -82,10 +82,10 @@ a {
 
 .login {
   color: var(--white);
-  background-color: rgb(95, 158, 160, 0.8);
+  background-color: var(--brown);
 }
 
 .logout {
   color: var(--white);
-  background-color: rgb(165, 42, 42, 0.8);
+  background-color: brown;
 }

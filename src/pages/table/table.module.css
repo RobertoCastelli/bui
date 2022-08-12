@@ -7,11 +7,16 @@
     |__|    /__/     \__\ |______/  |_______||_______| */
 
 .wrapper {
+  margin: 3rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+.wrapper h2 {
   text-transform: uppercase;
   text-align: center;
-  margin: 3rem 0.5rem;
 }
-.wrapper span {
+
+.sort__arrows {
   color: var(--white);
 }
 
@@ -49,7 +54,11 @@
 .header__list {
   text-align: left;
   display: block;
+  justify-content: space-evenly;
   font-size: small;
+}
+.header__list div {
+  width: 100%;
 }
 
 .search__global {

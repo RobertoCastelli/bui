@@ -6,7 +6,7 @@ import styles from "./auth.module.css"
 import { DataContext } from "../../context/context"
 
 const Auth = () => {
-  const { handleFocus, handleSignIn, handleEmailAndPassword } =
+  const { handleFocus, handleSignIn, handleSignOut, handleEmailAndPassword } =
     useContext(DataContext)
 
   return (
@@ -32,7 +32,15 @@ const Auth = () => {
           onFocus={(e) => handleFocus(e)}
         />
         <button className={styles.btnLogin} type="submit" name="btnLogin">
-          login
+          log in
+        </button>
+        <button
+          className={styles.btnLogout}
+          type="button"
+          name="btnLogout"
+          onClick={handleSignOut}
+        >
+          log out
         </button>
       </form>
     </div>

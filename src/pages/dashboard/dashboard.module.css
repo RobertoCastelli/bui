@@ -7,7 +7,10 @@
 |______/   \______/  /__/     \__\ | _| `._____||_______/  */
 
 .wrapper {
-  text-transform: uppercase;
+  margin: 3rem 1rem;
+}
+
+.wrapper h2 {
   text-align: center;
-  margin: 3rem 0;
+  text-transform: uppercase;
 }

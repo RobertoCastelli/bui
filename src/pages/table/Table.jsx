@@ -20,32 +20,19 @@ import { DataContext } from "../../context/context"
 import styles from "./table.module.css"
 
 const Table = () => {
-  const { database, getData } = useContext(DataContext)
-
-  const dummyData = [
-    {
-      id: 0,
-      campus: "zero",
-      edificio: "zero",
-      oggetto: "zero",
-      budget: "zero",
-      realizzato: "zero",
-    },
-    {
-      id: 1,
-      title: "campus",
-      action: "uno",
-    },
-    {
-      id: 2,
-      title: "ciao",
-      action: "testa",
-    },
-  ]
+  const { database } = useContext(DataContext)
 
   // data
   const columns = useMemo(() => COLUMNS, [])
-  const data = useMemo(() => (database ? database : dummyData), [database])
+  const data = useMemo(() => {
+    return [
+      {
+        id: "id",
+        campus: "campus",
+      },
+    ]
+  }, [])
+  /*  const data = useMemo(() => database, []) */
 
   // useTable props + plugins
   const {
@@ -89,7 +76,6 @@ const Table = () => {
 
   return (
     <div className={styles.wrapper}>
-      <button onClick={getData}>data</button>
       <h2>table</h2>
       {/* COLUMN HIDER */}
       <div className={styles.header__list}>
@@ -118,7 +104,7 @@ const Table = () => {
                   >
                     {column.render("Header")}
                     {/* COLUMN SORT */}
-                    <span>
+                    <span className={styles.sort__arrows}>
                       {column.isSorted
                         ? column.isSortedDesc
                           ? " ⮙"

@@ -6,8 +6,11 @@
 |  `----.|  `--'  | |  |__| | |  | |  |\   | 
 |_______| \______/   \______| |__| |__| \__|  */
 
+.wrapper {
+  margin: 3rem 1rem;
+}
+
 .wrapper h2 {
-  margin: 3rem 0;
   text-align: center;
   text-transform: uppercase;
 }
@@ -39,7 +42,8 @@
   justify-content: space-around;
 }
 
-.btnLogin {
+.btnLogin,
+.btnLogout {
   background-color: var(--brown);
   border: none;
   border-radius: 0.3rem;
@@ -52,7 +56,12 @@
   box-shadow: -5px -5px 10px var(--white), 3px 3px 15px -3px var(--brown);
 }
 
-.btnLogin:active {
+.btnLogout {
+  background-color: brown;
+}
+
+.btnLogin:active,
+.btnLogout:active {
   transform: translateY(1px);
   box-shadow: -5px -5px 10px var(--white), 1px 1px 15px -5px var(--brown);
 }

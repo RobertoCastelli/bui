@@ -45,11 +45,11 @@ export const Navbar = () => {
                 <ul>
                   <Link to="/auth">
                     {/* LOG IN */}
-                    <li className={styles.login}>log in</li>
+                    <li className={styles.login}>login</li>
                   </Link>
                   {/* LOG OUT */}
                   <li className={styles.logout} onClick={handleSignOut}>
-                    log out
+                    logout
                   </li>
                 </ul>
               </div>
